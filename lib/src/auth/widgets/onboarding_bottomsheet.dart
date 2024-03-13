@@ -1,6 +1,9 @@
+import 'package:begho_mobile/src/auth/views/signin_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../constants.dart';
+import '../views/signup_screen.dart';
+import '../widgets/auth_button.dart';
 
 class OnboardingBottomSheet extends StatelessWidget {
   const OnboardingBottomSheet({
@@ -13,7 +16,7 @@ class OnboardingBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: size.height * 0.4,
+      height: size.height * 0.45,
       color: Colors.white.withOpacity(0),
       padding: const EdgeInsets.all(8),
       child: Container(
@@ -49,17 +52,40 @@ class OnboardingBottomSheet extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white),
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 18),
-              child: Text(
-                'Get Started',
-                style: GoogleFonts.mulish(color: AppColors.blackMain),
-                textAlign: TextAlign.center,
-              ),
+            Column(
+              children: [
+                const AuthButton(
+                    title: 'Get started', route: SignupScreen.routeName),
+                const SizedBox(
+                  height: 10,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Have an account?",
+                      style: GoogleFonts.mulish(
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 5,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(SigninScreen.routeName);
+                      },
+                      child: Text(
+                        'Sign in',
+                        style: GoogleFonts.mulish(
+                          color: Colors.white,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    )
+                  ],
+                )
+              ],
             )
           ],
         ),
@@ -67,3 +93,4 @@ class OnboardingBottomSheet extends StatelessWidget {
     );
   }
 }
+

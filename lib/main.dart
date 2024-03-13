@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './src/auth/views/onboarding_screen.dart';
+import './src/auth/views/signup_screen.dart';
+import './src/auth/views/signin_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +23,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const OnboardingScreen(),
+      routes: {
+        SignupScreen.routeName: (context) => const SignupScreen(),
+        SigninScreen.routeName: (context) => const SigninScreen()
+      },
     );
   }
 }
